@@ -32,7 +32,10 @@ public class CustomMotor {
     public String motorName;
     HardwareMap hm;
 
-    public CustomMotor(HardwareMap hardwareMap, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea) {
+    feedBack FeedBack;
+
+    public CustomMotor(HardwareMap hardwareMap, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, feedBack fb) {
+        FeedBack = fb;
         maxPower = powerMax;
         minPower = powerMin;
         defaultPower = powerDefault;
@@ -56,10 +59,9 @@ public class CustomMotor {
     //Set Power Functions//
     ///////////////////////
 
-    public double setPower(double power) {
-        power = clip(power);
-        motor.setPower(power);
-        return power;
+    double setPower(double power) {
+        FeedBack.sayFeedBack(motorName, power);
+        return fixValue(power);
     }
 
     public double update(double power) {

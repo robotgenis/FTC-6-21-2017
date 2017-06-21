@@ -22,7 +22,7 @@ public class CustomMotorTest extends com.qualcomm.robotcore.eventloop.opmode.Lin
     @Override
     public void runOpMode() throws InterruptedException {
 
-        motors = new MotorHandler(hardwareMap);
+        motors = new MotorHandler(hardwareMap, telemetry);
 
         testMotor = motors.newMotor("test", 1, true, true);
 
