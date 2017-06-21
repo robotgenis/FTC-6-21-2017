@@ -14,6 +14,7 @@ import com.qualcomm.robotcore.util.Range;
 
 public class CustomMotor {
 
+
     public double maxPower = 1;
     public double minPower = -1;
 
