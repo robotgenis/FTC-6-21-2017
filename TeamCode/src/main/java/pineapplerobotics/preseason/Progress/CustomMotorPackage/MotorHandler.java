@@ -8,36 +8,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Brandon on 6/19/2017.
+ * Created by Brandon on 6/26/2017.
  */
 
 public class MotorHandler {
 
-    HardwareMap hm;
-    HashMap<String, CustomMotor> Motors = new HashMap<String, CustomMotor>();
+    private HardwareMap hardwareMap;
+    private HashMap<String, CustomMotor> Motors = new HashMap<String, CustomMotor>();
 
-    Telemetry t;
+    private Telemetry telemetry;
 
-    feedBack FeedBack;
+    private FeedBack feedBack;
 
-    public MotorHandler(HardwareMap hardwareMap, Telemetry telemetry) {
-        t = telemetry;
-        hm = hardwareMap;
-        FeedBack = new feedBack(t);
+    public MotorHandler(HardwareMap hm, Telemetry t) {
+        telemetry = t;
+        hardwareMap = hm;
+        feedBack = new FeedBack(t);
     }
 
     public CustomMotor newMotor(String name) {
-        Motors.put(name, new CustomMotor(hm, name, -1, 1, 0, 1, false, true, FeedBack));
+        Motors.put(name, new CustomMotor(hardwareMap, name, -1, 1, 0, 1, false, true, feedBack));
         return getMotor(name);
     }
 
     public CustomMotor newMotor(String name, double scale, boolean exp, boolean deadArea) {
-        Motors.put(name, new CustomMotor(hm, name, -1, 1, 0, scale, exp, deadArea, FeedBack));
+        Motors.put(name, new CustomMotor(hardwareMap, name, -1, 1, 0, scale, exp, deadArea, feedBack));
         return getMotor(name);
     }
 
     public CustomMotor newMotor(String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea) {
-        Motors.put(name, new CustomMotor(hm, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, FeedBack));
+        Motors.put(name, new CustomMotor(hardwareMap, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, feedBack));
         return getMotor(name);
     }
 
@@ -58,21 +58,4 @@ public class MotorHandler {
         }
     }
 
-}
-
-class feedBack{
-
-    public boolean giveFeedBack = true;
-
-    Telemetry t;
-
-    public feedBack(Telemetry telemetry){
-        t = telemetry;
-    }
-
-    public void sayFeedBack(String motorName, double speed){
-        if(giveFeedBack){
-            t.addData(motorName, speed);
-        }
-    }
 }

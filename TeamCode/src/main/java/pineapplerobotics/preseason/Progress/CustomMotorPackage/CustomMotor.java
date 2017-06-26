@@ -1,11 +1,7 @@
 package pineapplerobotics.preseason.Progress.CustomMotorPackage;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorController;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.configuration.MotorConfigurationType;
 import com.qualcomm.robotcore.util.Range;
 
 /**
@@ -13,7 +9,6 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 public class CustomMotor {
-
 
     public double maxPower = 1;
     public double minPower = -1;
@@ -26,15 +21,15 @@ public class CustomMotor {
 
     public boolean doDeadArea = false;
 
-    double[] deadAreaArray = {0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 0.9, 1.0};
+    private final double[] deadAreaArray = {0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 0.9, 1.0};
 
-    DcMotor motor;
+    public DcMotor motor;
     public String motorName;
-    HardwareMap hm;
+    private HardwareMap hm;
 
-    feedBack FeedBack;
+    pineapplerobotics.preseason.Progress.CustomMotorPackage.FeedBack FeedBack;
 
-    public CustomMotor(HardwareMap hardwareMap, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, feedBack fb) {
+    public CustomMotor(HardwareMap hardwareMap, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, pineapplerobotics.preseason.Progress.CustomMotorPackage.FeedBack fb) {
         FeedBack = fb;
         maxPower = powerMax;
         minPower = powerMin;
@@ -44,11 +39,6 @@ public class CustomMotor {
         doDeadArea = deadArea;
         motorName = name;
         hm = hardwareMap;
-    }
-
-    public void setScale(double scale, boolean exp) {
-        scaleBy = scale;
-        exponetional = exp;
     }
 
     public void mapMotor() {

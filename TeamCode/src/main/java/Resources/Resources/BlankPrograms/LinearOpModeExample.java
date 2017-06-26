@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @Disabled
 
 
-public class LinearOpMode extends com.qualcomm.robotcore.eventloop.opmode.LinearOpMode {
+public class LinearOpModeExample extends com.qualcomm.robotcore.eventloop.opmode.LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
 
 

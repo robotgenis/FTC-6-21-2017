@@ -1,9 +1,10 @@
 
-package pineapplerobotics.preseason.Progress.CustomMotorPackage;
+package pineapplerobotics.preseason.Progress.CustomMotorPackage.TestWithConfig;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.ElapsedTime;
+
+import pineapplerobotics.preseason.Progress.CustomMotorPackage.TestWithConfig.robotConfig;
 
 /**
  * Created by Brandon on 3/31/2017.
@@ -15,24 +16,18 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class CustomMotorTest extends com.qualcomm.robotcore.eventloop.opmode.LinearOpMode {
 
-    MotorHandler motors;
-
-    CustomMotor testMotor;
+    robotConfig r = new robotConfig();
 
     @Override
     public void runOpMode() throws InterruptedException {
 
-        motors = new MotorHandler(hardwareMap, telemetry);
-
-        testMotor = motors.newMotor("test", 1, true, true);
-
-        motors.mapMotors();
+        r.config(hardwareMap, telemetry);
 
         waitForStart();
 
         while (opModeIsActive()) {
 
-            testMotor.update(gamepad1.left_stick_x);
+            r.testMotor.update(gamepad1.left_stick_x);
 
 
         }
