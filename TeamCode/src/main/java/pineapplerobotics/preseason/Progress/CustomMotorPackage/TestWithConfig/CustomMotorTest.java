@@ -21,15 +21,13 @@ public class CustomMotorTest extends com.qualcomm.robotcore.eventloop.opmode.Lin
     @Override
     public void runOpMode() throws InterruptedException {
 
-        r.config(hardwareMap, telemetry);
+        r.config(this);
 
         waitForStart();
 
         while (opModeIsActive()) {
 
             r.testMotor.update(gamepad1.left_stick_x);
-
-
         }
     }
 

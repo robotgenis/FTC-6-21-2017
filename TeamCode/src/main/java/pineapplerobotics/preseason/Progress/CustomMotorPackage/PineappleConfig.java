@@ -1,5 +1,6 @@
 package pineapplerobotics.preseason.Progress.CustomMotorPackage;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -11,5 +12,5 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 abstract public class PineappleConfig {
     public PineappleRobot robotHandler;
 
-    abstract public void config(HardwareMap hm, Telemetry t);
+    abstract public void config(LinearOpMode linearOpMode);
 }

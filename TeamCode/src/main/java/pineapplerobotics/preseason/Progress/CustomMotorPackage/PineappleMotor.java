@@ -8,7 +8,9 @@ import com.qualcomm.robotcore.util.Range;
  * Created by Brandon on 6/19/2017.
  */
 
-public class CustomMotor {
+public class PineappleMotor {
+
+    public PineappleEnum.MotorLoc motorLoc = PineappleEnum.MotorLoc.NONE;
 
     public double maxPower = 1;
     public double minPower = -1;
@@ -27,10 +29,11 @@ public class CustomMotor {
     public String motorName;
     private HardwareMap hm;
 
-    pineapplerobotics.preseason.Progress.CustomMotorPackage.FeedBack FeedBack;
+    PineappleFeedBack PineappleFeedBack;
 
-    public CustomMotor(HardwareMap hardwareMap, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, pineapplerobotics.preseason.Progress.CustomMotorPackage.FeedBack fb) {
-        FeedBack = fb;
+    public PineappleMotor(HardwareMap hardwareMap, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, PineappleFeedBack fb, PineappleEnum.MotorLoc loc) {
+        motorLoc = loc;
+        PineappleFeedBack = fb;
         maxPower = powerMax;
         minPower = powerMin;
         defaultPower = powerDefault;
@@ -50,7 +53,7 @@ public class CustomMotor {
     ///////////////////////
 
     double setPower(double power) {
-        FeedBack.sayFeedBack(motorName, power);
+        PineappleFeedBack.sayFeedBack(motorName, power);
         return fixValue(power);
     }
 
@@ -63,9 +66,9 @@ public class CustomMotor {
         else return setPower(defaultPower);
     }
 
-    public double update(boolean on, boolean off) {
-        if (on) return setPower(maxPower);
-        else if (off) return setPower(minPower);
+    public double update(boolean forward, boolean backward) {
+        if (forward) return setPower(maxPower);
+        else if (backward) return setPower(minPower);
         else return setPower(defaultPower);
     }
 

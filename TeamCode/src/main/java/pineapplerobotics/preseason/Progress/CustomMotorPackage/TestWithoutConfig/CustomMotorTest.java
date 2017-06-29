@@ -1,8 +1,7 @@
 package pineapplerobotics.preseason.Progress.CustomMotorPackage.TestWithoutConfig;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-
-import pineapplerobotics.preseason.Progress.CustomMotorPackage.CustomMotor;
+import pineapplerobotics.preseason.Progress.CustomMotorPackage.PineappleMotor;
 import pineapplerobotics.preseason.Progress.CustomMotorPackage.PineappleRobot;
 
 /**
@@ -10,14 +9,14 @@ import pineapplerobotics.preseason.Progress.CustomMotorPackage.PineappleRobot;
  */
 
 public class CustomMotorTest extends LinearOpMode{
-    PineappleRobot robot = new PineappleRobot(hardwareMap, telemetry);
+    PineappleRobot robot = new PineappleRobot(this);
 
-    CustomMotor testMotor;
+    PineappleMotor testMotor;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
-        testMotor = robot.motorHandler.newMotor("test");
+        testMotor = robot.pineappleMotorHandler.newMotor("test", 1, true , true);
 
         waitForStart();
         while (opModeIsActive()){

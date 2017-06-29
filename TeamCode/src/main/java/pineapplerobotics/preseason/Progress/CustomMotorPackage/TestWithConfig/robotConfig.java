@@ -1,10 +1,8 @@
 package pineapplerobotics.preseason.Progress.CustomMotorPackage.TestWithConfig;
 
-import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
-import pineapplerobotics.preseason.Progress.CustomMotorPackage.CustomMotor;
+import pineapplerobotics.preseason.Progress.CustomMotorPackage.PineappleMotor;
 import pineapplerobotics.preseason.Progress.CustomMotorPackage.PineappleConfig;
 import pineapplerobotics.preseason.Progress.CustomMotorPackage.PineappleRobot;
 
@@ -14,10 +12,11 @@ import pineapplerobotics.preseason.Progress.CustomMotorPackage.PineappleRobot;
 
 public class robotConfig extends PineappleConfig {
 
-    public CustomMotor testMotor;
+    public PineappleMotor testMotor;
 
-    public void config(HardwareMap hm, Telemetry t){
-        robotHandler = new PineappleRobot(hm, t);
-        testMotor = robotHandler.motorHandler.newMotor("testMotor");
+    public void config(LinearOpMode linearOpMode){
+        robotHandler = new PineappleRobot(linearOpMode);
+        testMotor = robotHandler.pineappleMotorHandler.newMotor("testMotor");
+        robotHandler.mapRobot();
     }
 }
