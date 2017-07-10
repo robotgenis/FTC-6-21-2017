@@ -4,7 +4,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Brandon on 6/26/2017.
@@ -71,11 +73,26 @@ public class PineappleMotorHandler {
     }
 
     public void mapMotors() {
-        for (Map.Entry<String, PineappleMotor> entry : storage.motors.entrySet()) {
-            String name = entry.getKey();
-            PineappleMotor motor = entry.getValue();
+        /*HashMap<String, PineappleMotor> selects = storage.motors;
 
-            motor.mapMotor();
+        for(Map.Entry<String, PineappleMotor> entry : selects.entrySet()) {
+            String key = entry.getKey();
+            PineappleMotor value = entry.getValue();
+            value.mapMotor();
+            // do what you have to do here
+            // In your case, an other loop.
+        }
+
+        */
+
+        if(storage.motors.isEmpty()){
+            pineappleFeedBack.sayFeedBack("Emtpy Storage Error: ", 404);
+        }
+
+        Set<Map.Entry<String, PineappleMotor>> set = storage.motors.entrySet();
+
+        for (Map.Entry<String, PineappleMotor> me : set) {
+            me.getValue().mapMotor();
         }
     }
 

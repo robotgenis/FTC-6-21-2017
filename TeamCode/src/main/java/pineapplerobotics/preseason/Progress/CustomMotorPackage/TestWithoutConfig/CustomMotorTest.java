@@ -18,6 +18,8 @@ public class CustomMotorTest extends LinearOpMode{
 
         testMotor = robot.pineappleMotorHandler.newMotor("test", 1, true , true);
 
+        robot.mapRobot();
+
         waitForStart();
         while (opModeIsActive()){
 
