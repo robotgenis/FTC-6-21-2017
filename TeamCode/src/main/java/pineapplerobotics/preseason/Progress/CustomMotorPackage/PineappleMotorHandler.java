@@ -18,13 +18,10 @@ public class PineappleMotorHandler {
 
     private PineappleStorage storage;
 
-    private Telemetry telemetry;
-
     public PineappleFeedBack pineappleFeedBack;
 
     public PineappleMotorHandler(PineappleRobot robot) {
         storage = robot.storage;
-        telemetry = robot.linearOpMode.telemetry;
         hardwareMap = robot.linearOpMode.hardwareMap;
         pineappleFeedBack = robot.pineappleFeedBack;
     }
@@ -73,27 +70,20 @@ public class PineappleMotorHandler {
     }
 
     public void mapMotors() {
-        /*HashMap<String, PineappleMotor> selects = storage.motors;
-
-        for(Map.Entry<String, PineappleMotor> entry : selects.entrySet()) {
-            String key = entry.getKey();
-            PineappleMotor value = entry.getValue();
-            value.mapMotor();
-            // do what you have to do here
-            // In your case, an other loop.
-        }
-
-        */
 
         if(storage.motors.isEmpty()){
             pineappleFeedBack.sayFeedBack("Emtpy Storage Error: ", 404);
         }
 
-        Set<Map.Entry<String, PineappleMotor>> set = storage.motors.entrySet();
-
-        for (Map.Entry<String, PineappleMotor> me : set) {
-            me.getValue().mapMotor();
+        for(Map.Entry<String, PineappleMotor> entry : storage.motors.entrySet()) {
+            String name = entry.getKey();
+            PineappleMotor motor = entry.getValue();
+            motor.mapMotor();
         }
+
+
+
+
     }
 
 }

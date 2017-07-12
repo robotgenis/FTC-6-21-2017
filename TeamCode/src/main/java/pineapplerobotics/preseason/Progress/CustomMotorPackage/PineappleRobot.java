@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 public class PineappleRobot {
 
-    public PineappleMotorHandler pineappleMotorHandler;
+    public PineappleMotorHandler motorHandler;
 
     public PineappleStorage storage;
 
@@ -18,11 +18,13 @@ public class PineappleRobot {
 
     public PineappleRobot(LinearOpMode LOM){
         linearOpMode = LOM;
-        pineappleMotorHandler = new PineappleMotorHandler(this);
+        storage = new PineappleStorage();
+        motorHandler = new PineappleMotorHandler(this);
+        pineappleFeedBack = new PineappleFeedBack(linearOpMode.telemetry);
     }
 
     public void mapRobot(){
-        pineappleMotorHandler.mapMotors();
+        motorHandler.mapMotors();
     }
 
 }

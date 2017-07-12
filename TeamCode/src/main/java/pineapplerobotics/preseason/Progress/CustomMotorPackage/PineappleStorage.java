@@ -10,20 +10,20 @@ import java.util.Map;
 
 public class PineappleStorage {
 
-    public HashMap<PineappleEnum.MotorLoc, PineappleMotor> driveMotor = new HashMap<PineappleEnum.MotorLoc, PineappleMotor>();
+    public HashMap<PineappleEnum.MotorLoc, PineappleMotor> driveMotors = new HashMap<PineappleEnum.MotorLoc, PineappleMotor>();
 
     public HashMap<String, PineappleMotor> motors = new HashMap<String, PineappleMotor>();
 
     public void insert(PineappleMotor motor){
         if(motor.motorLoc == PineappleEnum.MotorLoc.RIGHT || motor.motorLoc == PineappleEnum.MotorLoc.LEFT){
-            driveMotor.put(motor.motorLoc, motor);
+            driveMotors.put(motor.motorLoc, motor);
         }
         motors.put(motor.motorName, motor);
     }
 
     public ArrayList<PineappleMotor> getDrivemotors(PineappleEnum.MotorLoc motorLoc){
         ArrayList<PineappleMotor> returnMotors = new ArrayList<PineappleMotor>();
-        for (Map.Entry<PineappleEnum.MotorLoc, PineappleMotor> entry : driveMotor.entrySet()) {
+        for (Map.Entry<PineappleEnum.MotorLoc, PineappleMotor> entry : driveMotors.entrySet()) {
             PineappleEnum.MotorLoc loc = entry.getKey();
             PineappleMotor motor = entry.getValue();
             if(loc == motorLoc){
