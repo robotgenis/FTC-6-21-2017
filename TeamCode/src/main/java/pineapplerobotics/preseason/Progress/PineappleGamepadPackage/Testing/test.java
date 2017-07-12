@@ -15,13 +15,10 @@ public class test extends PineappleLinearOpMode{
 
 
     @Override
-    public void runOpMode() throws InterruptedException {
-
-
+    public void run() throws InterruptedException {
         waitForStart();
-       while (opModeIsActive()){
-           telemetry.addData("test a button: ", pineappleGamepad1.a);
-       }
-
+        while (opModeIsActive()){
+            telemetry.addData("test a button: ", pineappleGamepad1.a);
+        }
     }
 }

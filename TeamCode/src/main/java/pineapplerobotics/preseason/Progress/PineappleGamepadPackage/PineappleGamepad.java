@@ -12,4 +12,7 @@ public class PineappleGamepad extends Gamepad{
         this.setGamepadId(g.getGamepadId());
     }
 
+    public boolean advancedA = false;
+
+
 }

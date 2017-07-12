@@ -9,4 +9,11 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public abstract class PineappleLinearOpMode extends LinearOpMode{
     public PineappleGamepad pineappleGamepad1 = new PineappleGamepad(gamepad1);
     public PineappleGamepad pineappleGamepad2 = new PineappleGamepad(gamepad2);
+
+    abstract public void run()throws InterruptedException;
+
+    @Override
+    public void runOpMode() throws InterruptedException {
+        run();
+    }
 }
