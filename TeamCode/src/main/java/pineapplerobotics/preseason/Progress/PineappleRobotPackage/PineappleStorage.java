@@ -1,4 +1,4 @@
-package pineapplerobotics.preseason.Progress.CustomMotorPackage;
+package pineapplerobotics.preseason.Progress.PineappleRobotPackage;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,12 +1,8 @@
-package pineapplerobotics.preseason.Progress.CustomMotorPackage;
+package pineapplerobotics.preseason.Progress.PineappleRobotPackage;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Brandon on 6/26/2017.

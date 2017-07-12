@@ -1,6 +1,4 @@
-package pineapplerobotics.preseason.Progress.CustomMotorPackage;
-
-import java.util.HashMap;
+package pineapplerobotics.preseason.Progress.PineappleRobotPackage;
 
 /**
  * Created by ftcpi on 6/29/2017.

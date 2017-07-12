@@ -1,4 +1,4 @@
-package pineapplerobotics.preseason.Progress.CustomMotorPackage;
+package pineapplerobotics.preseason.Progress.PineappleRobotPackage;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;

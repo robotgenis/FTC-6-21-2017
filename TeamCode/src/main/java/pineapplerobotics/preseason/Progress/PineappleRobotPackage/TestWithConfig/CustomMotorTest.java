@@ -1,10 +1,8 @@
 
-package pineapplerobotics.preseason.Progress.CustomMotorPackage.TestWithConfig;
+package pineapplerobotics.preseason.Progress.PineappleRobotPackage.TestWithConfig;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-import pineapplerobotics.preseason.Progress.CustomMotorPackage.TestWithConfig.robotConfig;
 
 /**
  * Created by Brandon on 3/31/2017.
