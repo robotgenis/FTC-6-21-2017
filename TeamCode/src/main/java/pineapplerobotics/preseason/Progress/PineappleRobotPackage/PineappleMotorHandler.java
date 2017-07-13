@@ -31,8 +31,11 @@ public class PineappleMotorHandler {
     }
 
     public PineappleMotor newMotor(String name, double scale, boolean exp, boolean deadArea) {
-        storage.insert(new PineappleMotor(hardwareMap, name, -1, 1, 0, scale, exp, deadArea, pineappleFeedBack, PineappleEnum.MotorLoc.NONE));
-        return getMotor(name);
+        PineappleMotor motor = new PineappleMotor(hardwareMap, name, -1, 1, 0, scale, exp, deadArea, pineappleFeedBack, PineappleEnum.MotorLoc.NONE);
+        storage.insert(motor);
+
+
+        return  motor;
     }
 
     public PineappleMotor newMotor(String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea) {
@@ -69,15 +72,15 @@ public class PineappleMotorHandler {
 
         if(storage.motors.isEmpty()){
             pineappleFeedBack.sayFeedBack("Emtpy Storage Error: ", 404);
+        }else {
+
+            for (Map.Entry<String, PineappleMotor> entry : storage.motors.entrySet()) {
+                String name = entry.getKey();
+                PineappleMotor motor = entry.getValue();
+                motor.mapMotor();
+            }
+
         }
-
-        for(Map.Entry<String, PineappleMotor> entry : storage.motors.entrySet()) {
-            String name = entry.getKey();
-            PineappleMotor motor = entry.getValue();
-            motor.mapMotor();
-        }
-
-
 
 
     }

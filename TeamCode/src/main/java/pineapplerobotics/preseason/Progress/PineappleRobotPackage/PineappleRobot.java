@@ -19,8 +19,8 @@ public class PineappleRobot {
     public PineappleRobot(LinearOpMode LOM){
         linearOpMode = LOM;
         storage = new PineappleStorage();
-        motorHandler = new PineappleMotorHandler(this);
         pineappleFeedBack = new PineappleFeedBack(linearOpMode.telemetry);
+        motorHandler = new PineappleMotorHandler(this);
     }
 
     public void mapRobot(){

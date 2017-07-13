@@ -54,6 +54,7 @@ public class PineappleMotor {
 
     double setPower(double power) {
         PineappleFeedBack.sayFeedBack(motorName, power);
+        motor.setPower(fixValue(power));
         return fixValue(power);
     }
 

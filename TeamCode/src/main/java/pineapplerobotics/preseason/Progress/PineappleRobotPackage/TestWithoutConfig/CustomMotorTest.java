@@ -14,16 +14,20 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot
 @TeleOp(name = "PineappleRobotTest", group = "Linear Opmode")
 
 public class CustomMotorTest extends LinearOpMode{
-    PineappleRobot robot = new PineappleRobot(this);
+    PineappleRobot robot;
 
     PineappleMotor testMotor;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
+        robot = new PineappleRobot(this);
+
         testMotor = robot.motorHandler.newMotor("test", 1, true , true);
 
         robot.mapRobot();
+
+
 
         waitForStart();
         while (opModeIsActive()){
