@@ -10,17 +10,14 @@ public class PineappleRobot {
 
     public PineappleMotorHandler motorHandler;
 
-    public PineappleStorage storage;
+    public PineappleDrive drive;
 
-    public LinearOpMode linearOpMode;
-
-    public PineappleFeedBack pineappleFeedBack;
+    private PineappleResources resources;
 
     public PineappleRobot(LinearOpMode LOM){
-        linearOpMode = LOM;
-        storage = new PineappleStorage();
-        pineappleFeedBack = new PineappleFeedBack(linearOpMode.telemetry);
-        motorHandler = new PineappleMotorHandler(this);
+        resources = new PineappleResources(LOM);
+        motorHandler = new PineappleMotorHandler(resources);
+        drive = new PineappleDrive(resources);
     }
 
     public void mapRobot(){

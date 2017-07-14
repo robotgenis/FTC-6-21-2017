@@ -1,7 +1,6 @@
 package pineapplerobotics.preseason.Progress.PineappleRobotPackage;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
 /**
@@ -25,15 +24,14 @@ public class PineappleMotor {
 
     private final double[] deadAreaArray = {0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 0.9, 1.0};
 
-    public DcMotor motor;
+    public DcMotor motorObject;
     public String motorName;
-    private HardwareMap hm;
 
-    PineappleFeedBack PineappleFeedBack;
+    private PineappleResources resources;
 
-    public PineappleMotor(HardwareMap hardwareMap, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, PineappleFeedBack fb, PineappleEnum.MotorLoc loc) {
+    public PineappleMotor(PineappleResources res, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorLoc loc) {
+        resources = res;
         motorLoc = loc;
-        PineappleFeedBack = fb;
         maxPower = powerMax;
         minPower = powerMin;
         defaultPower = powerDefault;
@@ -41,11 +39,10 @@ public class PineappleMotor {
         exponetional = exp;
         doDeadArea = deadArea;
         motorName = name;
-        hm = hardwareMap;
     }
 
     public void mapMotor() {
-        motor = hm.dcMotor.get(motorName);
+        motorObject = resources.hardwareMap.dcMotor.get(motorName);
     }
 
     ///////////////////////
@@ -53,9 +50,14 @@ public class PineappleMotor {
     ///////////////////////
 
     double setPower(double power) {
-        PineappleFeedBack.sayFeedBack(motorName, power);
-        motor.setPower(fixValue(power));
-        return fixValue(power);
+        power = fixValue(power);
+        resources.feedBack.sayFeedBack(motorName, power);
+        motorObject.setPower(power);
+        return power;
+    }
+
+    void setDirectPower(double power){
+        motorObject.setPower(power);
     }
 
     public double update(double power) {

@@ -10,71 +10,64 @@ import java.util.Map;
 
 public class PineappleMotorHandler {
 
-    private HardwareMap hardwareMap;
+    private PineappleResources resources;
 
-    private PineappleStorage storage;
-
-    public PineappleFeedBack pineappleFeedBack;
-
-    public PineappleMotorHandler(PineappleRobot robot) {
-        storage = robot.storage;
-        hardwareMap = robot.linearOpMode.hardwareMap;
-        pineappleFeedBack = robot.pineappleFeedBack;
+    public PineappleMotorHandler(PineappleResources r) {
+        resources = r;
     }
-
 
     //Without Enum input
 
     public PineappleMotor newMotor(String name) {
-        storage.insert(new PineappleMotor(hardwareMap, name, -1, 1, 0, 1, false, true, pineappleFeedBack, PineappleEnum.MotorLoc.NONE));
+        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, PineappleEnum.MotorLoc.NONE));
         return getMotor(name);
     }
 
     public PineappleMotor newMotor(String name, double scale, boolean exp, boolean deadArea) {
-        PineappleMotor motor = new PineappleMotor(hardwareMap, name, -1, 1, 0, scale, exp, deadArea, pineappleFeedBack, PineappleEnum.MotorLoc.NONE);
-        storage.insert(motor);
+        PineappleMotor motor = new PineappleMotor(resources, name, -1, 1, 0, scale, exp, deadArea, PineappleEnum.MotorLoc.NONE);
+        resources.storage.insert(motor);
 
 
         return  motor;
     }
 
     public PineappleMotor newMotor(String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea) {
-        storage.insert(new PineappleMotor(hardwareMap, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, pineappleFeedBack, PineappleEnum.MotorLoc.NONE));
+        resources.storage.insert(new PineappleMotor(resources, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, PineappleEnum.MotorLoc.NONE));
         return getMotor(name);
     }
 
 
     //With enum input
     public PineappleMotor newDriveMotor(String name, PineappleEnum.MotorLoc motorLoc) {
-        storage.insert(new PineappleMotor(hardwareMap, name, -1, 1, 0, 1, false, true, pineappleFeedBack, motorLoc));
+        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, motorLoc));
         return getMotor(name);
     }
 
     public PineappleMotor newDriveMotor(String name, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorLoc motorLoc) {
-        storage.insert(new PineappleMotor(hardwareMap, name, -1, 1, 0, scale, exp, deadArea, pineappleFeedBack, motorLoc));
+        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, scale, exp, deadArea, motorLoc));
         return getMotor(name);
     }
 
     public PineappleMotor newDriveMotor(String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorLoc motorLoc) {
-        storage.insert(new PineappleMotor(hardwareMap, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, pineappleFeedBack, motorLoc));
+        resources.storage.insert(new PineappleMotor(resources, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, motorLoc));
         return getMotor(name);
     }
 
     public PineappleMotor getMotor(String name) {
-        if (!storage.motors.containsKey(name)) {
+        if (!resources.storage.motors.containsKey(name)) {
             return null;
         } else {
-            return storage.motors.get(name);
+            return resources.storage.motors.get(name);
         }
     }
 
     public void mapMotors() {
 
-        if(storage.motors.isEmpty()){
-            pineappleFeedBack.sayFeedBack("Emtpy Storage Error: ", 404);
+        if(resources.storage.motors.isEmpty()){
+            resources.feedBack.sayFeedBack("Emtpy Storage Error: ", 404);
         }else {
 
-            for (Map.Entry<String, PineappleMotor> entry : storage.motors.entrySet()) {
+            for (Map.Entry<String, PineappleMotor> entry : resources.storage.motors.entrySet()) {
                 String name = entry.getKey();
                 PineappleMotor motor = entry.getValue();
                 motor.mapMotor();

@@ -30,7 +30,7 @@ public class MotorExample extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-        //This is where the motor is connected to the name of the motor that is set on the phone
+        //This is where the motorObject is connected to the name of the motorObject that is set on the phone
         //Where name is, is the name of the motor on the phone
         ExampleMotor = hardwareMap.dcMotor.get("Name");
 
