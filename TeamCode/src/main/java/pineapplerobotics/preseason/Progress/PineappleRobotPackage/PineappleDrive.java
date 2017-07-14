@@ -17,14 +17,23 @@ public class PineappleDrive {
     }
 
     public void setPower(double leftPower, double rightPower){
-        setMotor(PineappleEnum.MotorLoc.LEFT, leftPower);
-        setMotor(PineappleEnum.MotorLoc.RIGHT, rightPower);
+        setMotor(PineappleEnum.MotorLoc.LEFT, leftPower, false);
+        setMotor(PineappleEnum.MotorLoc.RIGHT, rightPower, false);
     }
 
-    void setMotor(PineappleEnum.MotorLoc location, double power){
+    public void setDirectPower(double leftPower, double rightPower){
+        setMotor(PineappleEnum.MotorLoc.LEFT, leftPower, true);
+        setMotor(PineappleEnum.MotorLoc.RIGHT, rightPower, true);
+    }
+
+    void setMotor(PineappleEnum.MotorLoc location, double power, boolean direct){
         ArrayList<PineappleMotor> motors = resources.storage.getDrivemotors(location);
         for (PineappleMotor motor : motors) {
-            motor.setDirectPower(power);
+            if(direct){
+                motor.setDirectPower(power);
+            }else {
+                motor.setPower(power);
+            }
         }
     }
 
