@@ -49,7 +49,7 @@ public class PineappleMotor {
         motorObject.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-    public void encoderDrive(int speed, int counts) {
+    public void encoderDrive(double speed, int counts) {
         int target;
         if(resources.linearOpMode.opModeIsActive()){
             target = motorObject.getCurrentPosition() + counts;
