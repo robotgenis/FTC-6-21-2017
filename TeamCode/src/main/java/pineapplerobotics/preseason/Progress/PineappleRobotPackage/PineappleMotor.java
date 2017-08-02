@@ -39,7 +39,36 @@ public class PineappleMotor {
         exponetional = exp;
         doDeadArea = deadArea;
         motorName = name;
+        setupEncoder();
     }
+
+    public void setupEncoder(){
+        motorObject.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        resources.linearOpMode.idle();
+
+        motorObject.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    public void encoderDrive(int speed, int counts) {
+        int target;
+        if(resources.linearOpMode.opModeIsActive()){
+            target = motorObject.getCurrentPosition() + counts;
+
+            motorObject.setTargetPosition(target);
+            motorObject.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            motorObject.setPower(Math.abs(speed));
+
+            while (resources.linearOpMode.opModeIsActive() && motorObject.isBusy()){
+
+            }
+
+            motorObject.setPower(0);
+
+            motorObject.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
+    }
+
 
     public void mapMotor() {
         motorObject = resources.hardwareMap.dcMotor.get(motorName);
