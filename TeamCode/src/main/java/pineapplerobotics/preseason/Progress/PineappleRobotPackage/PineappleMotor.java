@@ -39,8 +39,7 @@ public class PineappleMotor {
         exponetional = exp;
         doDeadArea = deadArea;
         motorName = name;
-        setupEncoder();
-    }
+}
 
     public void setupEncoder(){
         motorObject.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -72,6 +71,7 @@ public class PineappleMotor {
 
     public void mapMotor() {
         motorObject = resources.hardwareMap.dcMotor.get(motorName);
+        setupEncoder();
     }
 
     ///////////////////////
