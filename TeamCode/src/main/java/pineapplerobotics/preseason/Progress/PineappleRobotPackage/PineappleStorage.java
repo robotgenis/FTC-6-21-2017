@@ -15,7 +15,10 @@ public class PineappleStorage {
     public HashMap<String, PineappleMotor> motors = new HashMap<String, PineappleMotor>();
 
     public void insert(PineappleMotor motor){
-        if(motor.motorLoc == PineappleEnum.MotorLoc.RIGHT || motor.motorLoc == PineappleEnum.MotorLoc.LEFT){
+        if(motor.motorLoc == PineappleEnum.MotorLoc.RIGHT ){
+            driveMotors.put(motor.motorLoc, motor);
+        }
+        if (motor.motorLoc == PineappleEnum.MotorLoc.LEFT){
             driveMotors.put(motor.motorLoc, motor);
         }
         motors.put(motor.motorName, motor);
