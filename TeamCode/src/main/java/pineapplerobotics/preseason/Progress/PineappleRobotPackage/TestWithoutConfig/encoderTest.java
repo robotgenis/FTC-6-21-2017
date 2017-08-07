@@ -25,12 +25,12 @@ public class EncoderTest extends LinearOpMode {
 
         robot = new PineappleRobot(this);
 
-        motor = robot.motorHandler.newMotor("motor", 1, true , true);
+        motor = robot.motorHandler.newMotor("motor", 1, true , true, PineappleEnum.MotorType.NEV40);
 
         robot.mapRobot();
 
         waitForStart();
-        motor.encoderDrive(1, 3000);
+        motor.encoderDrive(1, 15, PineappleEnum.MotorValueType.INCH, 4);
         sleep(1000);
         telemetry.addData("Encoder", motor.motorObject.getCurrentPosition());
         telemetry.update();
