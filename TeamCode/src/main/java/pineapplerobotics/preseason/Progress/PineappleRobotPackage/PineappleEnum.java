@@ -17,4 +17,10 @@ public class PineappleEnum {
     public enum PineappleSensorEnum {
         TOUCH, ODSRAWMAX, ODSRAW, ODSLIGHTDETECTED, CSRED, CSGREEN, CSBLUE, CSALPHA, CSARGB, GSX, GSY, GSZ, GSHEADING, GSROTATIONFRACTION
     }
+    public enum MotorValueType{
+        INCH, COUNTS, DEGREES, CM, RADIANS
+    }
+    public enum MotorType{
+        NEV60, NEV40, NEV20, NEV3_7, UNDI
+    }
 }
