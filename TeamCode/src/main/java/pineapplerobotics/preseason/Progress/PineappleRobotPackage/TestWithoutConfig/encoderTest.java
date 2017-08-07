@@ -15,7 +15,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot
 @TeleOp(name = "PineappleRobotEncoderTest", group = "Linear Opmode")
 
 
-public class EncoderTest extends LinearOpMode {
+public class encoderTest extends LinearOpMode {
     PineappleRobot robot;
 
     PineappleMotor motor;
@@ -25,12 +25,12 @@ public class EncoderTest extends LinearOpMode {
 
         robot = new PineappleRobot(this);
 
-        motor = robot.motorHandler.newMotor("motor", 1, true , true);
+        motor = robot.motorHandler.newMotor("motor", 1, true , true, PineappleEnum.MotorType.UNDI);
 
         robot.mapRobot();
 
         waitForStart();
-        motor.encoderDrive(1, 3000);
+        motor.encoderDrive(1, 3000, PineappleEnum.MotorValueType.CM, .3);
         sleep(1000);
         telemetry.addData("Encoder", motor.motorObject.getCurrentPosition());
         telemetry.update();
