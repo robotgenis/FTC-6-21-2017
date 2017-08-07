@@ -15,7 +15,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 
 
 
-public class OpticalDistanceSensorExample extends LinearOpMode {
+public class opticalDistanceSensorExample extends LinearOpMode {
     PineappleRobot robot;
 
     PineappleOpticalDistanceSensor optical;

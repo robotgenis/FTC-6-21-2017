@@ -14,7 +14,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 @TeleOp(name = "PineappleRobotDriveUntil", group = "Linear Opmode")
 
 
-public class DriveUntilTest extends LinearOpMode {
+public class driveUntilTest extends LinearOpMode {
     PineappleRobot robot;
 
     PineappleMotor motor;
@@ -26,6 +26,7 @@ public class DriveUntilTest extends LinearOpMode {
         robot = new PineappleRobot(this);
 
         motor = robot.motorHandler.newDriveMotor("motor", 1, true , true, PineappleEnum.MotorLoc.LEFT, PineappleEnum.MotorType.NEV40);
+
         touch = robot.sensorHandler.newTouchSensor("t");
 
         robot.mapRobot();

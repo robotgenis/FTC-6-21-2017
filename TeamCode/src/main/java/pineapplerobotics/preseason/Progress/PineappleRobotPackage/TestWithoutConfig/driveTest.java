@@ -13,7 +13,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot
 
 @TeleOp(name = "PineappleRobotDriveTest", group = "Linear Opmode")
 
-public class DriveTest extends LinearOpMode {
+public class driveTest extends LinearOpMode {
     PineappleRobot robot;
 
     PineappleMotor left;
@@ -26,6 +26,7 @@ public class DriveTest extends LinearOpMode {
 
         left = robot.motorHandler.newDriveMotor("r", 1, true , true, PineappleEnum.MotorLoc.LEFT, PineappleEnum.MotorType.NEV40);
         right = robot.motorHandler.newDriveMotor("l", 1, true , true, PineappleEnum.MotorLoc.RIGHT, PineappleEnum.MotorType.NEV40);
+
 
         robot.mapRobot();
 

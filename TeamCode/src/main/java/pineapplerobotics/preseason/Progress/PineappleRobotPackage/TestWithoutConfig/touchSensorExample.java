@@ -16,7 +16,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 
 
 
-public class TouchSensorExample extends LinearOpMode {
+public class touchSensorExample extends LinearOpMode {
     PineappleRobot robot;
 
     PineappleTouchSensor touch;
