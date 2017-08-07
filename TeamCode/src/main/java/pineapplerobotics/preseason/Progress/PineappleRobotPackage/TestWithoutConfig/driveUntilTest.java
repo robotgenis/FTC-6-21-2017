@@ -14,7 +14,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 @TeleOp(name = "PineappleRobotDriveUntil", group = "Linear Opmode")
 
 
-public class driveUntilTest  extends LinearOpMode {
+public class DriveUntilTest extends LinearOpMode {
     PineappleRobot robot;
 
     PineappleMotor motor;

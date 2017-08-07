@@ -15,7 +15,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot
 @TeleOp(name = "PineappleRobotEncoderTest", group = "Linear Opmode")
 
 
-public class encoderTest  extends LinearOpMode {
+public class EncoderTest extends LinearOpMode {
     PineappleRobot robot;
 
     PineappleMotor motor;
