@@ -10,21 +10,21 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  */
 
 //This will be added after testing of the motorObject handler and will control all local handlers that are needed by many classes like
-class PineappleResources {
+public class PineappleResources {
 
     /////////
     //LOCAL//
     /////////
 
-    PineappleStorage storage;
+    public PineappleStorage storage;
 
-    PineappleFeedBack feedBack;
+    public PineappleFeedBack feedBack;
 
-    LinearOpMode linearOpMode;
+    public LinearOpMode linearOpMode;
 
-    Telemetry telemetry;
+    public Telemetry telemetry;
 
-    HardwareMap hardwareMap;
+    public HardwareMap hardwareMap;
 
     PineappleResources(LinearOpMode LOM){
         storage = new PineappleStorage();
