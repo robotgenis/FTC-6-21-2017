@@ -1,7 +1,6 @@
 package pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleEnum;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleResources;
@@ -12,37 +11,37 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
  */
 
 public class PineappleColorSensor extends PineappleSensor {
-    public ColorSensor pineappleColorSensor;
+    public ColorSensor colorSensor;
     private PineappleResources resources;
 
     public PineappleColorSensor(String name, PineappleResources pineappleResources) {
-        makeSensor(name, pineappleResources);
         resources = pineappleResources;
+        makeSensor(name, pineappleResources);
     }
 
     @Override
     public void makeSensor(String name, PineappleResources pineappleResources) {
         sensorName = name;
-        pineappleColorSensor = resources.hardwareMap.colorSensor.get(sensorName);
+        colorSensor = resources.hardwareMap.colorSensor.get(sensorName);
     }
 
     public void CSLEDToggle(boolean toggle) {
-        pineappleColorSensor.enableLed(toggle);
+        colorSensor.enableLed(toggle);
     }
 
     @Override
     public double getValue(PineappleEnum.PineappleSensorEnum pineappleSensorEnum) {
         switch (pineappleSensorEnum) {
             case CSBLUE:
-                return (double) pineappleColorSensor.blue();
+                return (double) colorSensor.blue();
             case CSGREEN:
-                return (double) pineappleColorSensor.green();
+                return (double) colorSensor.green();
             case CSRED:
-                return (double) pineappleColorSensor.red();
+                return (double) colorSensor.red();
             case CSALPHA:
-                return (double) pineappleColorSensor.alpha();
+                return (double) colorSensor.alpha();
             case CSARGB:
-                return (double) pineappleColorSensor.argb();
+                return (double) colorSensor.argb();
             default:
                 return 0;
 
