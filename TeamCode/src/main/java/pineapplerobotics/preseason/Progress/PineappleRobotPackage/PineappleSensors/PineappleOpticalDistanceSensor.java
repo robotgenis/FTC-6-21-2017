@@ -16,13 +16,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 public class PineappleOpticalDistanceSensor extends PineappleSensor {
     public OpticalDistanceSensor opticalDistanceSensor;
     private PineappleResources resources;
-<<<<<<< HEAD
     public PineappleOpticalDistanceSensor (String name, PineappleResources pineappleResources){
-=======
-
-    public PineappleOpticalDistanceSensor(String name, PineappleResources pineappleResources) {
-        makeSensor(name, pineappleResources);
->>>>>>> 426447b02e2461b52c6ed9d357e414319b6631ba
         resources = pineappleResources;
         makeSensor(name, pineappleResources);
     }
