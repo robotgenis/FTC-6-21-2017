@@ -16,34 +16,38 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 public class PineappleOpticalDistanceSensor extends PineappleSensor {
     public OpticalDistanceSensor opticalDistanceSensor;
     private PineappleResources resources;
+<<<<<<< HEAD
     public PineappleOpticalDistanceSensor (String name, PineappleResources pineappleResources){
+=======
+
+    public PineappleOpticalDistanceSensor(String name, PineappleResources pineappleResources) {
+        makeSensor(name, pineappleResources);
+>>>>>>> 426447b02e2461b52c6ed9d357e414319b6631ba
         resources = pineappleResources;
         makeSensor(name, pineappleResources);
     }
+
     @Override
     public void makeSensor(String name, PineappleResources pineappleResources) {
         sensorName = name;
         opticalDistanceSensor = resources.hardwareMap.opticalDistanceSensor.get(sensorName);
     }
-    public void ODSLEDToggle(boolean toggle){
-            opticalDistanceSensor.enableLed(toggle);
+
+    public void ODSLEDToggle(boolean toggle) {
+        opticalDistanceSensor.enableLed(toggle);
     }
-    public double getValue(PineappleEnum.PineappleSensorEnum opticalDistanceSensorType) {
-        double output;
-        switch (opticalDistanceSensorType) {
+
+    public double getValue(PineappleEnum.PineappleSensorEnum pineappleSensorEnum) {
+        switch (pineappleSensorEnum) {
             case ODSRAWMAX:
-                output = opticalDistanceSensor.getRawLightDetectedMax();
-                break;
+                return opticalDistanceSensor.getRawLightDetectedMax();
             case ODSRAW:
-                output = opticalDistanceSensor.getRawLightDetected();
-                break;
+                return opticalDistanceSensor.getRawLightDetected();
             case ODSLIGHTDETECTED:
-                output= opticalDistanceSensor.getLightDetected();
-                break;
+                return opticalDistanceSensor.getLightDetected();
             default:
-                output=0;
-                break;
+                return 0;
         }
-        return output;
+
     }
 }
