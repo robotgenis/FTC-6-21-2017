@@ -17,13 +17,7 @@ public class PineappleAuto {
     }
 
     public void driveUntil(PineappleSensor sensor, double sensorValue, double power){
-        if (sensor.getValue() < sensorValue) {
-            drive.setDirectPower(power, power);
-            while (sensor.getValue() < sensorValue) {
 
-            }
-            drive.stop();
-        }
     }
 
 }
