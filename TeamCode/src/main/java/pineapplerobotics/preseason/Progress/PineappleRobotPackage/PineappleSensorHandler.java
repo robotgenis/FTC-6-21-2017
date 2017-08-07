@@ -1,5 +1,7 @@
 package pineapplerobotics.preseason.Progress.PineappleRobotPackage;
 
+import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleColorSensor;
+import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleGyroSensor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleOpticalDistanceSensor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleTouchSensor;
 
@@ -22,6 +24,16 @@ public class PineappleSensorHandler {
 
     public PineappleOpticalDistanceSensor newOpticalDistanceSensor(String name){
         PineappleOpticalDistanceSensor sensor = new PineappleOpticalDistanceSensor(name, resources);
+        return sensor;
+    }
+
+    public PineappleColorSensor newColorSensor(String name){
+        PineappleColorSensor sensor = new PineappleColorSensor(name, resources);
+        return sensor;
+    }
+
+    public PineappleGyroSensor newGyroSensor(String name){
+        PineappleGyroSensor sensor = new PineappleGyroSensor(name, resources);
         return sensor;
     }
 }

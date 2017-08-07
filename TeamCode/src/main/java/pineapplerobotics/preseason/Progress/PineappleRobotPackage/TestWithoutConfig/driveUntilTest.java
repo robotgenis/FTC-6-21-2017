@@ -11,14 +11,13 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 /**
  * Created by young on 8/7/2017.
  */
-
-@TeleOp(name = "PineappleRobotTouchSensorTest", group = "Linear Opmode")
-
+@TeleOp(name = "PineappleRobotDriveUntil", group = "Linear Opmode")
 
 
-public class touchSensorExample  extends LinearOpMode {
+public class driveUntilTest  extends LinearOpMode {
     PineappleRobot robot;
 
+    PineappleMotor motor;
     PineappleTouchSensor touch;
 
     @Override
@@ -26,14 +25,13 @@ public class touchSensorExample  extends LinearOpMode {
 
         robot = new PineappleRobot(this);
 
+        motor = robot.motorHandler.newDriveMotor("motor", 1, true , true, PineappleEnum.MotorLoc.LEFT);
         touch = robot.sensorHandler.newTouchSensor("t");
 
         robot.mapRobot();
 
         waitForStart();
-        while(opModeIsActive()) {
-            robot.sayFeedBack(touch.sensorName, touch.getValue(PineappleEnum.PineappleSensorEnum.TOUCH));
-            robot.updateFeedBack();
-        }
+
+        robot.auto.driveUntil(touch, PineappleEnum.PineappleSensorEnum.TOUCH, PineappleEnum.condition.EQUAL, 1, .3);
     }
 }
