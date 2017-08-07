@@ -4,35 +4,38 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleEnum;
-import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleMotor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot;
+import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleOpticalDistanceSensor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleTouchSensor;
 
 /**
  * Created by young on 8/7/2017.
  */
-
-@TeleOp(name = "PineappleRobotTouchSensorTest", group = "Linear Opmode")
-
+@TeleOp(name = "PineappleRobotOpticalDistancetest", group = "Linear Opmode")
 
 
-public class touchSensorExample  extends LinearOpMode {
+
+public class opticalDistanceSensorExample  extends LinearOpMode {
     PineappleRobot robot;
 
-    PineappleTouchSensor touch;
+    PineappleOpticalDistanceSensor optical;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
         robot = new PineappleRobot(this);
 
-        touch = robot.sensorHandler.newTouchSensor("t");
+        optical = robot.sensorHandler.newOpticalDistanceSensor("o");
 
         robot.mapRobot();
 
         waitForStart();
-        while(true) {
-            robot.sayFeedBack(touch.sensorName, touch.getValue(PineappleEnum.PineappleSensorEnum.TOUCH));
+        optical.ODSLEDToggle(true);
+
+        while(opModeIsActive()) {
+            robot.sayFeedBack("Raw", optical.getValue(PineappleEnum.PineappleSensorEnum.ODSRAW));
+            robot.sayFeedBack("LightDetected", optical.getValue(PineappleEnum.PineappleSensorEnum.ODSLIGHTDETECTED));
+            robot.sayFeedBack("Raw Max", optical.getValue(PineappleEnum.PineappleSensorEnum.ODSRAWMAX));
             robot.updateFeedBack();
         }
     }

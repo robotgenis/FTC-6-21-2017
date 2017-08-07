@@ -17,8 +17,8 @@ public class PineappleOpticalDistanceSensor extends PineappleSensor {
     public OpticalDistanceSensor opticalDistanceSensor;
     private PineappleResources resources;
     public PineappleOpticalDistanceSensor (String name, PineappleResources pineappleResources){
-        makeSensor(name, pineappleResources);
         resources = pineappleResources;
+        makeSensor(name, pineappleResources);
     }
     @Override
     public void makeSensor(String name, PineappleResources pineappleResources) {

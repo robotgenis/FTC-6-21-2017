@@ -1,5 +1,6 @@
 package pineapplerobotics.preseason.Progress.PineappleRobotPackage;
 
+import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleOpticalDistanceSensor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleTouchSensor;
 
 /**
@@ -16,6 +17,11 @@ public class PineappleSensorHandler {
 
     public PineappleTouchSensor newTouchSensor(String name){
         PineappleTouchSensor sensor = new PineappleTouchSensor(name, resources);
+        return sensor;
+    }
+
+    public PineappleOpticalDistanceSensor newOpticalDistanceSensor(String name){
+        PineappleOpticalDistanceSensor sensor = new PineappleOpticalDistanceSensor(name, resources);
         return sensor;
     }
 }

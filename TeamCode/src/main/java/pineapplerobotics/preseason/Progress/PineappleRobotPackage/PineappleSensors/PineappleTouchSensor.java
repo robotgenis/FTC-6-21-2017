@@ -3,6 +3,7 @@ package pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSens
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
+import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleEnum;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleResources;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensor;
@@ -25,7 +26,7 @@ public class PineappleTouchSensor extends PineappleSensor {
     }
 
     @Override
-    public double getValue() {
+    public double getValue(PineappleEnum.PineappleSensorEnum sensor) {
         if (touchSensor.isPressed()) {
             return 1;
         } else{

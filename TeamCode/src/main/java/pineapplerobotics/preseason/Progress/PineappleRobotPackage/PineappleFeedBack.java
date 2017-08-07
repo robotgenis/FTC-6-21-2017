@@ -22,5 +22,15 @@ public class PineappleFeedBack {
             telemetry.update();
         }
     }
+
+    public void sayFeedBackWithOutUpdate(String objectName, double amount){
+        if(giveFeedBack){
+            telemetry.addData(objectName, amount);
+        }
+    }
+
+    public void update(){
+        telemetry.update();
+    }
 }
 

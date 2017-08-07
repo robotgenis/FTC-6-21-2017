@@ -15,6 +15,6 @@ public class PineappleEnum {
         TOUCH
     }
     public enum PineappleSensorEnum {
-        ODSRAWMAX, ODSRAW, ODSLIGHTDETECTED
+        TOUCH, ODSRAWMAX, ODSRAW, ODSLIGHTDETECTED
     }
 }
