@@ -30,10 +30,7 @@ public class PineappleDrive {
         setMotor(PineappleEnum.MotorLoc.LEFT, 0, true);
         setMotor(PineappleEnum.MotorLoc.RIGHT, 0, true);
     }
-    public void test(PineappleEnum.MotorLoc location){
-        ArrayList<PineappleMotor> motors = resources.storage.getDrivemotors(location);
 
-    }
     void setMotor(PineappleEnum.MotorLoc location, double power, boolean direct){
         ArrayList<PineappleMotor> motors = resources.storage.getDrivemotors(location);
         for (PineappleMotor motor : motors) {

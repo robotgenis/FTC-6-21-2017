@@ -16,7 +16,7 @@ public class robotConfig extends PineappleConfig {
 
     public void config(LinearOpMode linearOpMode){
         robotHandler = new PineappleRobot(linearOpMode);
-        testMotor = robotHandler.motorHandler.newMotor("testMotor");
+//        testMotor = robotHandler.motorHandler.newMotor("testMotor");
         robotHandler.mapRobot();
     }
 }

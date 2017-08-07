@@ -25,7 +25,7 @@ public class DriveUntilTest extends LinearOpMode {
 
         robot = new PineappleRobot(this);
 
-        motor = robot.motorHandler.newDriveMotor("motor", 1, true , true, PineappleEnum.MotorLoc.LEFT);
+        motor = robot.motorHandler.newDriveMotor("motor", 1, true , true, PineappleEnum.MotorLoc.LEFT, PineappleEnum.MotorType.NEV40);
         touch = robot.sensorHandler.newTouchSensor("t");
 
         robot.mapRobot();
