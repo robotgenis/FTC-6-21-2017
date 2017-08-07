@@ -10,5 +10,7 @@ public class PineappleEnum {
         RIGHT, LEFT, NONE
     }
 
-
+    public enum Sensor {
+        TOUCH
+    }
 }

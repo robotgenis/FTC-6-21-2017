@@ -6,11 +6,13 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * Created by Brandon on 6/26/2017.
  */
 
-public class PineappleRobot {
+public class PineappleRobot{
 
     public PineappleMotorHandler motorHandler;
 
     public PineappleDrive drive;
+
+    public PineappleAuto auto;
 
     private PineappleResources resources;
 
@@ -18,6 +20,7 @@ public class PineappleRobot {
         resources = new PineappleResources(LOM);
         motorHandler = new PineappleMotorHandler(resources);
         drive = new PineappleDrive(resources);
+        auto = new PineappleAuto(resources, drive);
     }
 
     public void mapRobot(){
