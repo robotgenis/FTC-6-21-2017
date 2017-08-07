@@ -13,5 +13,5 @@ public abstract class PineappleSensor {
     public abstract void makeSensor(String name, PineappleResources pineappleResources);
 
 
-    public abstract double getValue();
+    public abstract double getValue(PineappleEnum.PineappleSensorEnum pineappleSensorEnum);
 }
