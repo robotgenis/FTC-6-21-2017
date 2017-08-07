@@ -18,38 +18,38 @@ public class PineappleMotorHandler {
 
     //Without Enum input
 
-    public PineappleMotor newMotor(String name) {
-        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, PineappleEnum.MotorLoc.NONE));
+    public PineappleMotor newMotor(String name, PineappleEnum.MotorType motorType) {
+        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, PineappleEnum.MotorLoc.NONE, motorType));
         return getMotor(name);
     }
 
-    public PineappleMotor newMotor(String name, double scale, boolean exp, boolean deadArea) {
-        PineappleMotor motor = new PineappleMotor(resources, name, -1, 1, 0, scale, exp, deadArea, PineappleEnum.MotorLoc.NONE);
+    public PineappleMotor newMotor(String name, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorType motorType) {
+        PineappleMotor motor = new PineappleMotor(resources, name, -1, 1, 0, scale, exp, deadArea, PineappleEnum.MotorLoc.NONE, motorType);
         resources.storage.insert(motor);
 
 
         return  motor;
     }
 
-    public PineappleMotor newMotor(String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea) {
-        resources.storage.insert(new PineappleMotor(resources, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, PineappleEnum.MotorLoc.NONE));
+    public PineappleMotor newMotor(String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorType motorType) {
+        resources.storage.insert(new PineappleMotor(resources, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, PineappleEnum.MotorLoc.NONE, motorType));
         return getMotor(name);
     }
 
 
     //With enum input
-    public PineappleMotor newDriveMotor(String name, PineappleEnum.MotorLoc motorLoc) {
-        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, motorLoc));
+    public PineappleMotor newDriveMotor(String name, PineappleEnum.MotorLoc motorLoc, PineappleEnum.MotorType motorType) {
+        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, motorLoc, motorType));
         return getMotor(name);
     }
 
-    public PineappleMotor newDriveMotor(String name, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorLoc motorLoc) {
-        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, scale, exp, deadArea, motorLoc));
+    public PineappleMotor newDriveMotor(String name, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorLoc motorLoc, PineappleEnum.MotorType motorType) {
+        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, scale, exp, deadArea, motorLoc, motorType));
         return getMotor(name);
     }
 
-    public PineappleMotor newDriveMotor(String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorLoc motorLoc) {
-        resources.storage.insert(new PineappleMotor(resources, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, motorLoc));
+    public PineappleMotor newDriveMotor(String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorLoc motorLoc, PineappleEnum.MotorType motorType) {
+        resources.storage.insert(new PineappleMotor(resources, name, powerMin, powerMax, powerDefault, scale, exp, deadArea, motorLoc, motorType));
         return getMotor(name);
     }
 

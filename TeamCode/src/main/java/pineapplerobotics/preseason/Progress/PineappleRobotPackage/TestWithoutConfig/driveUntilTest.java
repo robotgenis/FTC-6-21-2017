@@ -6,36 +6,32 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleEnum;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleMotor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot;
+import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleTouchSensor;
 
 /**
- * Created by Brandon on 7/14/2017.
+ * Created by young on 8/7/2017.
  */
+@TeleOp(name = "PineappleRobotDriveUntil", group = "Linear Opmode")
 
-@TeleOp(name = "PineappleRobotDriveTest", group = "Linear Opmode")
 
-public class DriveTest extends LinearOpMode {
+public class DriveUntilTest extends LinearOpMode {
     PineappleRobot robot;
 
-    PineappleMotor left;
-    PineappleMotor right;
+    PineappleMotor motor;
+    PineappleTouchSensor touch;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
         robot = new PineappleRobot(this);
 
-        left = robot.motorHandler.newDriveMotor("r", 1, true , true, PineappleEnum.MotorLoc.LEFT);
-        right = robot.motorHandler.newDriveMotor("l", 1, true , true, PineappleEnum.MotorLoc.RIGHT);
+        motor = robot.motorHandler.newDriveMotor("motor", 1, true , true, PineappleEnum.MotorLoc.LEFT);
+        touch = robot.sensorHandler.newTouchSensor("t");
 
         robot.mapRobot();
 
-
-
         waitForStart();
-        while (opModeIsActive()){
 
-            robot.drive.setPower(gamepad1.left_stick_y, gamepad1.right_stick_y);
-
-        }
+        robot.auto.driveUntil(touch, PineappleEnum.PineappleSensorEnum.TOUCH, PineappleEnum.condition.EQUAL, 1, .3);
     }
 }

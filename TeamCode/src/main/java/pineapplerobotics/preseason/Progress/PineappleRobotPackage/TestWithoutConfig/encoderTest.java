@@ -8,34 +8,34 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleMotor
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot;
 
 /**
- * Created by Brandon on 7/14/2017.
+ * Created by young on 8/2/2017.
  */
 
-@TeleOp(name = "PineappleRobotDriveTest", group = "Linear Opmode")
 
-public class DriveTest extends LinearOpMode {
+@TeleOp(name = "PineappleRobotEncoderTest", group = "Linear Opmode")
+
+
+public class EncoderTest extends LinearOpMode {
     PineappleRobot robot;
 
-    PineappleMotor left;
-    PineappleMotor right;
+    PineappleMotor motor;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
         robot = new PineappleRobot(this);
 
-        left = robot.motorHandler.newDriveMotor("r", 1, true , true, PineappleEnum.MotorLoc.LEFT);
-        right = robot.motorHandler.newDriveMotor("l", 1, true , true, PineappleEnum.MotorLoc.RIGHT);
+        motor = robot.motorHandler.newMotor("motor", 1, true , true);
 
         robot.mapRobot();
 
-
-
         waitForStart();
-        while (opModeIsActive()){
-
-            robot.drive.setPower(gamepad1.left_stick_y, gamepad1.right_stick_y);
-
-        }
+        motor.encoderDrive(1, 3000);
+        sleep(1000);
+        telemetry.addData("Encoder", motor.motorObject.getCurrentPosition());
+        telemetry.update();
+        sleep(1000);
     }
 }
+
+

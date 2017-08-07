@@ -15,8 +15,9 @@ public class PineappleMotor {
     public double minPower = -1;
 
     public double defaultPower = 0;
-
+    public double cpr;
     public double scaleBy = 1;
+    public PineappleEnum.MotorType motorType = PineappleEnum.MotorType.UNDI;
 
     public boolean exponetional = false;
 
@@ -29,7 +30,7 @@ public class PineappleMotor {
 
     private PineappleResources resources;
 
-    public PineappleMotor(PineappleResources res, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorLoc loc) {
+    public PineappleMotor(PineappleResources res, String name, double powerMin, double powerMax, double powerDefault, double scale, boolean exp, boolean deadArea, PineappleEnum.MotorLoc loc, PineappleEnum.MotorType type) {
         resources = res;
         motorLoc = loc;
         maxPower = powerMax;
@@ -39,12 +40,102 @@ public class PineappleMotor {
         exponetional = exp;
         doDeadArea = deadArea;
         motorName = name;
-    }
+        motorType = type;
+        cpr = motorTypeToCPR(type);
+}
+
 
     public void mapMotor() {
         motorObject = resources.hardwareMap.dcMotor.get(motorName);
+        setupEncoder();
+    }
+    ///////////////////////////
+    //Drive Encoder Functions//
+    ///////////////////////////
+    public double motorTypeToCPR(PineappleEnum.MotorType type){
+        switch (type) {
+            case NEV60:
+                return PineappleRobotConstants.NEV60CPR;
+            case NEV40:
+                return PineappleRobotConstants.NEV40CPR;
+            case NEV20:
+                return PineappleRobotConstants.NEV20CPR;
+            case NEV3_7:
+                return PineappleRobotConstants.NEV3_7CPR;
+            case UNDI:
+                return PineappleRobotConstants.TETRIXCPR;
+            default:
+                return 0;
+        }
+    }
+    public void setupEncoder(){
+        motorObject.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        resources.linearOpMode.idle();
+
+        motorObject.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
+    public void encoderDrive(double speed, double value, PineappleEnum.MotorValueType motorValueType, double wheelSize) {
+        if (motorValueType == PineappleEnum.MotorValueType.COUNTS) {
+            encoderDriveCounts(speed, (int) value);
+        } else {
+            encoderDriveDist(speed, value, wheelSize, motorValueType);
+
+        }
+    }
+    private void encoderDriveCounts(double speed, int counts){
+        int target;
+        if(resources.linearOpMode.opModeIsActive()){
+            target = motorObject.getCurrentPosition() + counts;
+
+            motorObject.setTargetPosition(target);
+            motorObject.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            motorObject.setPower(Math.abs(speed));
+
+            while (resources.linearOpMode.opModeIsActive() && motorObject.isBusy()){
+                resources.feedBack.sayFeedBack(motorName + " encoder", motorObject.getCurrentPosition());
+            }
+
+            motorObject.setPower(0);
+
+            motorObject.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
+    }
+    public int distToCounts(double value, PineappleEnum.MotorValueType motorValueType, double wheelSize, PineappleEnum.MotorType motorType){
+        switch (motorValueType) {
+            case INCH:
+                return (int)(cpr*(value/(PineappleRobotConstants.PI*wheelSize)));
+            case DEGREES:
+                return (int)(cpr*(value/360));
+            case CM:
+                return (int)(cpr*((value*PineappleRobotConstants.CMTOINCH)/(PineappleRobotConstants.PI*wheelSize)));
+            case RADIANS:
+                return (int)(cpr*(value/(2*PineappleRobotConstants.PI)));
+            default:
+                return 0;
+        }
+    }
+    private void encoderDriveDist(double speed, double inches, double wheelSize, PineappleEnum.MotorValueType motorValueType ){
+        int target;
+        int counts = distToCounts(inches, motorValueType,wheelSize, motorType);
+        if(resources.linearOpMode.opModeIsActive()){
+            target = motorObject.getCurrentPosition() + counts;
+
+            motorObject.setTargetPosition(target);
+            motorObject.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            motorObject.setPower(Math.abs(speed));
+
+            while (resources.linearOpMode.opModeIsActive() && motorObject.isBusy()){
+                resources.feedBack.sayFeedBack(motorName + " encoder", motorObject.getCurrentPosition());
+            }
+
+            motorObject.setPower(0);
+
+            motorObject.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
+    }
     ///////////////////////
     //Set Power Functions//
     ///////////////////////
