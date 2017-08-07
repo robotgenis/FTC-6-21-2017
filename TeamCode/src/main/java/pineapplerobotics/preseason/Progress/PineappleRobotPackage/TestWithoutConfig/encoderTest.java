@@ -30,7 +30,11 @@ public class encoderTest  extends LinearOpMode {
         robot.mapRobot();
 
         waitForStart();
-        motor.encoderDrive(.3, 3000);
+        motor.encoderDrive(1, 3000);
+        sleep(1000);
+        telemetry.addData("Encoder", motor.motorObject.getCurrentPosition());
+        telemetry.update();
+        sleep(1000);
     }
 }
 
