@@ -15,8 +15,8 @@ public class PineappleTouchSensor extends PineappleSensor {
     public TouchSensor  touchSensor;
     private PineappleResources resources;
     public PineappleTouchSensor (String name, PineappleResources pineappleResources){
-        makeSensor(name, pineappleResources);
         resources = pineappleResources;
+        makeSensor(name, pineappleResources);
     }
     @Override
     public void makeSensor(String name, PineappleResources pineappleResources) {

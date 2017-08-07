@@ -14,6 +14,8 @@ public class PineappleRobot{
 
     public PineappleAuto auto;
 
+    public PineappleSensorHandler sensorHandler;
+
     private PineappleResources resources;
 
     public PineappleRobot(LinearOpMode LOM){
@@ -21,10 +23,15 @@ public class PineappleRobot{
         motorHandler = new PineappleMotorHandler(resources);
         drive = new PineappleDrive(resources);
         auto = new PineappleAuto(resources, drive);
+        sensorHandler = new PineappleSensorHandler(resources);
     }
 
     public void mapRobot(){
         motorHandler.mapMotors();
+    }
+
+    public void sayFeedBack(String objectName, double value){
+        resources.feedBack.sayFeedBack(objectName, value);
     }
 
 }

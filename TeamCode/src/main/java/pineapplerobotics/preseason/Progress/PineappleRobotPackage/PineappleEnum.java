@@ -9,8 +9,4 @@ public class PineappleEnum {
     public enum MotorLoc{
         RIGHT, LEFT, NONE
     }
-
-    public enum Sensor {
-        TOUCH
-    }
 }
