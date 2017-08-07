@@ -9,7 +9,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleEnum;
 abstract class PineappleSensor {
 
     public String sensorName;
-    
+
     abstract void makeSensor(String name);
 
     abstract void getValue();

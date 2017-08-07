@@ -59,7 +59,7 @@ public class PineappleMotor {
             motorObject.setPower(Math.abs(speed));
 
             while (resources.linearOpMode.opModeIsActive() && motorObject.isBusy()){
-
+                resources.feedBack.sayFeedBack(motorName + " encoder", motorObject.getCurrentPosition());
             }
 
             motorObject.setPower(0);
