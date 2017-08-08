@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleEnum;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleMotor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot;
+import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleColorSensor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleTouchSensor;
 
 /**
@@ -18,7 +19,7 @@ public class driveUntilTest extends LinearOpMode {
     PineappleRobot robot;
 
     PineappleMotor motor;
-    PineappleTouchSensor touch;
+    PineappleColorSensor colorSensor;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -27,12 +28,12 @@ public class driveUntilTest extends LinearOpMode {
 
         motor = robot.motorHandler.newDriveMotor("motor", 1, true , true, PineappleEnum.MotorLoc.LEFT, PineappleEnum.MotorType.NEV40);
 
-        touch = robot.sensorHandler.newTouchSensor("t");
+        colorSensor = robot.sensorHandler.newColorSensor("c");
 
         robot.mapRobot();
 
         waitForStart();
 
-        robot.auto.driveUntil(touch, PineappleEnum.PineappleSensorEnum.TOUCH, PineappleEnum.condition.EQUAL, 1, .3);
+        robot.auto.driveUntil(colorSensor, PineappleEnum.PineappleSensorEnum.CSBLUE, PineappleEnum.condition.GREATERTHAN, 10, .3);
     }
 }

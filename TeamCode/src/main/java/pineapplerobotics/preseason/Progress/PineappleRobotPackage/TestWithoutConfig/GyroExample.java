@@ -33,6 +33,8 @@ public class GyroExample  extends LinearOpMode {
 
         while(opModeIsActive()) {
             robot.sayFeedBack("Heading", gyro.getValue(PineappleEnum.PineappleSensorEnum.GSHEADING));
+//            robot.sayFeedBack("Status", gyro.GSStatus());
+
             robot.sayFeedBack("X", gyro.getValue(PineappleEnum.PineappleSensorEnum.GSX));
             robot.sayFeedBack("Y", gyro.getValue(PineappleEnum.PineappleSensorEnum.GSY));
             robot.sayFeedBack("Z", gyro.getValue(PineappleEnum.PineappleSensorEnum.GSZ));
