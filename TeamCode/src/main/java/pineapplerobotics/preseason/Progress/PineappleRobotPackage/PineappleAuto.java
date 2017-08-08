@@ -19,7 +19,7 @@ public class PineappleAuto {
 
     public void driveUntil(PineappleSensor sensor, PineappleEnum.PineappleSensorEnum sensorEnum, PineappleEnum.condition condition,double sensorValue, double power){
         if(checkCondition(sensor.getValue(sensorEnum), sensorValue, condition)){
-//            drive.setMotor(PineappleEnum.MotorLoc.RIGHT, power, true);
+            drive.setMotor(PineappleEnum.MotorLoc.RIGHT, power, true);
             drive.setMotor(PineappleEnum.MotorLoc.LEFT, power, true);
             while (checkCondition(sensor.getValue(sensorEnum), sensorValue, condition)){
                 resources.feedBack.sayFeedBack(sensor.sensorName, sensor.getValue(sensorEnum));

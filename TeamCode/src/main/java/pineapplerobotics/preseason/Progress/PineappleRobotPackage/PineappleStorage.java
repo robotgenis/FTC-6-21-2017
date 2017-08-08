@@ -15,11 +15,25 @@ public class PineappleStorage {
     public HashMap<String, PineappleMotor> motors = new HashMap<String, PineappleMotor>();
 
     public void insert(PineappleMotor motor){
-        if(motor.motorLoc == PineappleEnum.MotorLoc.RIGHT ){
-            driveMotors.put(motor.motorLoc, motor);
-        }
-        if (motor.motorLoc == PineappleEnum.MotorLoc.LEFT){
-            driveMotors.put(motor.motorLoc, motor);
+        switch (motor.motorLoc) {
+            case RIGHT:
+                driveMotors.put(motor.motorLoc, motor);
+                break;
+            case LEFT:
+                driveMotors.put(motor.motorLoc, motor);
+                break;
+            case RIGHTFRONT:
+                driveMotors.put(motor.motorLoc, motor);
+                break;
+            case LEFTFRONT:
+                driveMotors.put(motor.motorLoc, motor);
+                break;
+            case RIGHTBACK:
+                driveMotors.put(motor.motorLoc, motor);
+                break;
+            case LEFTBACK:
+                driveMotors.put(motor.motorLoc, motor);
+                break;
         }
         motors.put(motor.motorName, motor);
     }

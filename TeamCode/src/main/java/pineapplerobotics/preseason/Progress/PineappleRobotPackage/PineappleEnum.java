@@ -7,7 +7,7 @@ package pineapplerobotics.preseason.Progress.PineappleRobotPackage;
 public class PineappleEnum {
 
     public enum MotorLoc {
-        RIGHT, LEFT, NONE
+        RIGHT, LEFT, NONE, RIGHTFRONT, LEFTFRONT, RIGHTBACK, LEFTBACK
     }
 
 
