@@ -42,6 +42,8 @@ public class PineappleColorSensor extends PineappleSensor {
                 return (double) colorSensor.alpha();
             case CSARGB:
                 return (double) colorSensor.argb();
+            case CSAVG:
+                return (double) (colorSensor.red()+colorSensor.green()+colorSensor.blue())/3;
             default:
                 return 0;
 
