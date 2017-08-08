@@ -33,7 +33,9 @@ public class PineappleRobot{
     public void sayFeedBack(String objectName, double value){
         resources.feedBack.sayFeedBackWithOutUpdate(objectName, value);
     }
-
+    public void sayFeedBack(String objectName, String value){
+        resources.feedBack.sayFeedBackWithOutUpdate(objectName, value);
+    }
     public void updateFeedBack(){
         resources.feedBack.update();
     }

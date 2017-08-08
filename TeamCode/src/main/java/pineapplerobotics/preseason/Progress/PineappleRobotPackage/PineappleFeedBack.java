@@ -28,7 +28,11 @@ public class PineappleFeedBack {
             telemetry.addData(objectName, amount);
         }
     }
-
+    public void sayFeedBackWithOutUpdate(String objectName, String amount){
+        if(giveFeedBack){
+            telemetry.addData(objectName, amount);
+        }
+    }
     public void update(){
         telemetry.update();
     }
