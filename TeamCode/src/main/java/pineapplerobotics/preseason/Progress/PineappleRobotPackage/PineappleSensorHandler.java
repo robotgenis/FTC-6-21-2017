@@ -4,6 +4,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleGyroSensor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleOpticalDistanceSensor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleTouchSensor;
+import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSensors.PineappleUltrasonicSensor;
 
 /**
  * Created by young on 8/7/2017.
@@ -21,7 +22,10 @@ public class PineappleSensorHandler {
         PineappleTouchSensor sensor = new PineappleTouchSensor(name, resources);
         return sensor;
     }
-
+    public PineappleUltrasonicSensor newUltrasonicSensor(String name){
+        PineappleUltrasonicSensor sensor = new PineappleUltrasonicSensor(name, resources);
+        return sensor;
+    }
     public PineappleOpticalDistanceSensor newOpticalDistanceSensor(String name){
         PineappleOpticalDistanceSensor sensor = new PineappleOpticalDistanceSensor(name, resources);
         return sensor;
