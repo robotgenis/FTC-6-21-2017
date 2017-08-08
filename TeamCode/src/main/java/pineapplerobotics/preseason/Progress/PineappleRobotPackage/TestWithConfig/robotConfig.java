@@ -2,6 +2,7 @@ package pineapplerobotics.preseason.Progress.PineappleRobotPackage.TestWithConfi
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleEnum;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleMotor;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleConfig;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleRobot;
@@ -16,7 +17,7 @@ public class robotConfig extends PineappleConfig {
 
     public void config(LinearOpMode linearOpMode){
         robotHandler = new PineappleRobot(linearOpMode);
-//        testMotor = robotHandler.motorHandler.newMotor("testMotor");
+        testMotor = robotHandler.motorHandler.newMotor("testMotor", PineappleEnum.MotorType.NEV40);
         robotHandler.mapRobot();
     }
 }

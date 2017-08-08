@@ -17,7 +17,10 @@ public class PineappleMotorHandler {
     }
 
     //Without Enum input
-
+    public PineappleMotor newMotor(String name) {
+        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, PineappleEnum.MotorLoc.NONE, PineappleEnum.MotorType.UNDI));
+        return getMotor(name);
+    }
     public PineappleMotor newMotor(String name, PineappleEnum.MotorType motorType) {
         resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, PineappleEnum.MotorLoc.NONE, motorType));
         return getMotor(name);
@@ -38,6 +41,10 @@ public class PineappleMotorHandler {
 
 
     //With enum input
+    public PineappleMotor newDriveMotor(String name, PineappleEnum.MotorLoc motorLoc) {
+        resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, motorLoc, PineappleEnum.MotorType.UNDI));
+        return getMotor(name);
+    }
     public PineappleMotor newDriveMotor(String name, PineappleEnum.MotorLoc motorLoc, PineappleEnum.MotorType motorType) {
         resources.storage.insert(new PineappleMotor(resources, name, -1, 1, 0, 1, false, true, motorLoc, motorType));
         return getMotor(name);
