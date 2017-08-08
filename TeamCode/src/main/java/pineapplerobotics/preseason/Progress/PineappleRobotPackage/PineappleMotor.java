@@ -86,12 +86,14 @@ public class PineappleMotor {
     private void encoderDriveCounts(double speed, int counts){
         int target;
         if(resources.linearOpMode.opModeIsActive()){
+            if (isPositive(speed) != isPositive(counts)){counts=-counts;}
+
             target = motorObject.getCurrentPosition() + counts;
 
             motorObject.setTargetPosition(target);
             motorObject.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-            motorObject.setPower(Math.abs(speed));
+            motorObject.setPower(speed);
 
             while (resources.linearOpMode.opModeIsActive() && motorObject.isBusy()){
                 resources.feedBack.sayFeedBack(motorName + " encoder", motorObject.getCurrentPosition());
@@ -116,16 +118,24 @@ public class PineappleMotor {
                 return 0;
         }
     }
+    private boolean isPositive(double value){
+        if(value>=0){
+            return true;
+        } else {
+            return false;
+        }
+    }
     private void encoderDriveDist(double speed, double inches, double wheelSize, PineappleEnum.MotorValueType motorValueType ){
         int target;
         int counts = distToCounts(inches, motorValueType,wheelSize, motorType);
         if(resources.linearOpMode.opModeIsActive()){
+            if (isPositive(speed) != isPositive(counts)){counts=-counts;}
             target = motorObject.getCurrentPosition() + counts;
 
             motorObject.setTargetPosition(target);
             motorObject.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-            motorObject.setPower(Math.abs(speed));
+            motorObject.setPower(speed);
 
             while (resources.linearOpMode.opModeIsActive() && motorObject.isBusy()){
                 resources.feedBack.sayFeedBack(motorName + " encoder", motorObject.getCurrentPosition());
