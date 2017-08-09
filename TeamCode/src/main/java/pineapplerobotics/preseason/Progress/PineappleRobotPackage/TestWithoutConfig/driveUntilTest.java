@@ -2,6 +2,8 @@ package pineapplerobotics.preseason.Progress.PineappleRobotPackage.TestWithoutCo
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleEnum;
 import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleMotor;
@@ -18,22 +20,26 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 public class driveUntilTest extends LinearOpMode {
     PineappleRobot robot;
 
-    PineappleMotor motor;
-    PineappleColorSensor colorSensor;
+    PineappleMotor left;
+    PineappleMotor right;
+    PineappleTouchSensor touch;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
         robot = new PineappleRobot(this);
 
-        motor = robot.motorHandler.newDriveMotor("motor", 1, true , true, PineappleEnum.MotorLoc.LEFT, PineappleEnum.MotorType.NEV40);
+        left = robot.motorHandler.newDriveMotor("left", 1, true , true, PineappleEnum.MotorLoc.LEFT, PineappleEnum.MotorType.NEV40);
+        right = robot.motorHandler.newDriveMotor("right", 1, true , true, PineappleEnum.MotorLoc.RIGHT, PineappleEnum.MotorType.NEV40);
 
-        colorSensor = robot.sensorHandler.newColorSensor("c");
+        touch = robot.sensorHandler.newTouchSensor("touch");
 
         robot.mapRobot();
 
+        right.motorObject.setDirection(DcMotor.Direction.REVERSE);
+
         waitForStart();
 
-        robot.auto.driveUntil(colorSensor, PineappleEnum.PineappleSensorEnum.CSBLUE, PineappleEnum.condition.GREATERTHAN, 10, .3);
+        robot.auto.driveUntil(touch, PineappleEnum.PineappleSensorEnum.TOUCH, PineappleEnum.condition.EQUAL, 1, .2);
     }
 }

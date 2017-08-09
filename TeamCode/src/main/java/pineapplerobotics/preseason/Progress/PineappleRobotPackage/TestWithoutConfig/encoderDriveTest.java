@@ -12,7 +12,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
 /**
  * Created by young on 8/7/2017.
  */
-@TeleOp(name = "PineappleRobotDriveUntil", group = "Linear Opmode")
+@TeleOp(name = "PineappleRobotEncoderDriveTest", group = "Linear Opmode")
 
 
 public class encoderDriveTest extends LinearOpMode {
@@ -38,6 +38,8 @@ public class encoderDriveTest extends LinearOpMode {
 
         waitForStart();
 
-        robot.auto.driveUntil(touch, PineappleEnum.PineappleSensorEnum.TOUCH, PineappleEnum.condition.EQUAL, 1, .2);
+        robot.auto.encoderDrive(0.5, 4, PineappleEnum.MotorValueType.INCH,4);
+        robot.drive.setDirectPower(-1, -1);
+        Thread.sleep(1000);
     }
 }
