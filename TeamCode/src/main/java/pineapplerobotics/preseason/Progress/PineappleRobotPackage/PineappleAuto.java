@@ -49,5 +49,8 @@ public class PineappleAuto {
         }
         return true;
     }
+    public void encoderDrive(double speed, double value, PineappleEnum.MotorValueType motorValueType, double wheelSize) {
+        drive.encoderDrive(speed, value, motorValueType, wheelSize);
+    }
 
 }

@@ -49,9 +49,11 @@ public class PineappleMotor {
         motorObject = resources.hardwareMap.dcMotor.get(motorName);
         setupEncoder();
     }
+
     ///////////////////////////
     //Drive Encoder Functions//
     ///////////////////////////
+
     public double motorTypeToCPR(PineappleEnum.MotorType type){
         switch (type) {
             case NEV60:
@@ -68,6 +70,7 @@ public class PineappleMotor {
                 return 0;
         }
     }
+
     public void setupEncoder(){
         motorObject.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         resources.linearOpMode.idle();
