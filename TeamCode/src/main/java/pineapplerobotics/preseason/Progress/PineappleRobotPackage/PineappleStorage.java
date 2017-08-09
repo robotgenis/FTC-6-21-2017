@@ -51,5 +51,17 @@ public class PineappleStorage {
         }
         return returnMotors;
     }
+    public ArrayList<PineappleMotor> getDrivemotors(){
+        ArrayList<PineappleMotor> returnMotors = new ArrayList<PineappleMotor>();
+        for (Map.Entry<PineappleEnum.MotorLoc, PineappleMotor> entry : driveMotors.entrySet()) {
+            PineappleEnum.MotorLoc loc = entry.getKey();
+            PineappleMotor motor = entry.getValue();
+            if(loc != PineappleEnum.MotorLoc.NONE){
+                returnMotors.add(motor);
+            }
 
+
+        }
+        return returnMotors;
+    }
 }
