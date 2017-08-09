@@ -12,7 +12,7 @@ import pineapplerobotics.preseason.Progress.PineappleRobotPackage.PineappleSenso
  * Created by young on 8/7/2017.
  */
 
-@TeleOp(name = "PineappleRobotTouchSensorTest", group = "Linear Opmode")
+@TeleOp(name = "PineappleRobotUltrasonicSensorTest", group = "Linear Opmode")
 
 
 
