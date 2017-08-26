@@ -46,7 +46,7 @@ public class HConfig extends PineappleConfig{
         LegLeftWaist.encoderStart(SLW,LW);
         LegLeftKnee.encoderStart(SLK,LK);
 
-        while(LegLeftWaist.encodersBusy() && LegLeftKnee.encodersBusy() && LegRightWaist.encodersBusy() && LegRightKnee.encodersBusy()){
+        while(LegLeftWaist.encodersBusy() || LegLeftKnee.encodersBusy() || LegRightWaist.encodersBusy() || LegRightKnee.encodersBusy()){
 
         }
 
