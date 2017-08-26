@@ -104,7 +104,7 @@ public class PineappleMotor {
 
             motorObject.setPower(0);
 
-            motorObject.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            motorObject.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         }
     }
     public int distToCounts(double value, PineappleEnum.MotorValueType motorValueType, double wheelSize, PineappleEnum.MotorType motorType){
@@ -146,9 +146,32 @@ public class PineappleMotor {
 
             motorObject.setPower(0);
 
-            motorObject.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            motorObject.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         }
     }
+
+    public void encoderStart(double speed, int counts){
+        int target;
+        if(resources.linearOpMode.opModeIsActive()){
+            if (isPositive(speed) != isPositive(counts)){counts=-counts;}
+            target = motorObject.getCurrentPosition() + counts;
+
+            motorObject.setTargetPosition(target);
+            motorObject.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            motorObject.setPower(speed);
+        }
+    }
+
+    public void encoderStop(){
+        motorObject.setPower(0);
+        motorObject.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    }
+
+    public boolean encodersBusy(){
+        return motorObject.isBusy();
+    }
+
     ///////////////////////
     //Set Power Functions//
     ///////////////////////
